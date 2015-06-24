@@ -1,6 +1,6 @@
 #cloud-config
 users:
-  - name: demo
+  - name: core
     ssh-authorized-keys:
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDT2eU3Lyn81AIK3x8psCcyxmWXDF4IYsmaOt7uk1lsX+Z6dC5SJtNEAmx1U4jtq3aM+Sa3FBJq0/1sBIy462Dd74H4YRT3sM0+gJxMSG242FQ4x1fGmeBclOAqdcG1SOBCgLI0jxOMuRp8/7Eo9r0T746PktzljrV9IWeTCVD3ZpNeIOCn/iRxb4Tt91V9F6p+OXYoFoO4RWlpwms59WrPtSoCBl21jwH6/aGKUm+Q4BIK571Av1ii+puGS/vGrf8IHglYrohOO+RMTC4BfCvrZowI1J5OPgggs+Pf2wyDHpru2srdCbhG7Io5LIcimdMplUqRrKdbtD/nsqrBM4s9 gardnert@debian
     groups:
