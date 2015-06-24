@@ -1,8 +1,14 @@
 #cloud-config
-
+chpasswd:
+  list: |
+    root:yourpassword
+  expire: False
 hostname: coreos1
 
-coreos:
+coreos:  
+  etcd:    
+    addr: $private_ipv4:4001
+    peer-addr: $private_ipv4:7001
   units:
     - name: etcd.service
       command: start
@@ -14,29 +20,18 @@ coreos:
         Name=ens3
 
         [Network]
-        Address=139.126.118.195/24
-        Gateway=139.126.118.254
-        DNS=139.1263118.34
+        Address=x.x.x.109/24
+        Gateway=x.x.x.1
+        DNS=x.x.x.10
+        DNS=x.x.x.11 
         DNS=8.8.8.8
   etcd:
     discovery: https://discovery.etcd.io/a8c36a5e968b606ffa1510165c2cbe21
 users:
   - name: core
   ssh_authorized_keys:
-  - ssh-rsa 56tLVhoomnRUPhLNI+hvvsXCYd9gm5InbEwass6vPx1NM5pncIWXbnT5u92caxfz
-YzdIBdyuVbuWJSBD4l1OF7jlbcpSAMdWKj/TmQJSGXV2HzkaP5ncIrOmOpwgj2a8
-3FGBj7sa7+kkMkNat10LzxR5gN2nupOwqzFlauHHV1li40gFdhLBPmVhDWyrGhTW
-XJTMcCIXwqYCZ8yRDdgqZ/xkzRmuBnBf+5mXa8DEJN98EgUYBiHzFHMe23ypXwoM
-scR5RiOUqyzR6LP5Ek0HlkUUozlqcxEsKipQeuDK3CDIgbgn2I2aRcs9Mv0k5eg7
-SpU0Y9HALN3cWUOABnpaDD7gaXcGUnhkde7XDVwxP9zwn0Sttb15giamdhEeFSz0
-D6M+x1prvMXOHILE+9kar5AMDaxDFszipoiQQMwJnZdA+FT0eA2PEVEXMgisldlc
-z8U9hIXuzkxvYkIqaV0PcvyHXUeRIh9Npx2a7e5K+00TsK2zum3Pg2FOapadZQP2
-lTrf386r26xTHR+qu9NjKMl4HgFi/4M8to8ttjSei3ISrZvRRX6Vj9rb9p3WgQO1
-FP5aZQxhuv6YyemMhx6P+CXeZhrXc7cpntPvWgWYD9iaXbqIuvaE7jrLoadQUQaI
-SjGLEK9KHBGADJMUn34xiLYN/kwiTGkyqdYGmaVJigQJbiWwfEt6OuKzKvsu4252
-eYZrhZT6ssDeHHVSy1PemARIGoI5+lt7WqCtOMo6z7uLiupnLc9YTCtQmZJPd6Wb
-vjlm9gBWqFICbJ0f+XMpk7lXnGRp8w2ixeWv1mxjhmk=
-
+  - ssh-rsa 56tLVhoomnRUPhLNI+hvvsXCYd9gm5InbEwass6vPx1NM5pncIWXbnT5u92caxfzYzdIBdyuVbuWJSBD4l1OF7jlbcpSAMdWKj/TmQJSGXV2HzkaP5ncIrOmOpwgj2a83FGBj7sa7+kkMkNat10LzxR5gN2nupOwqzFlauHHV1li40gFdhLBPmVhDWyrGhTWXJTMcCIXwqYCZ8yRDdgqZ/xkzRmuBnBf+5mXa8DEJN98EgUYBiHzFHMe23ypXwoMscR5RiOUqyzR6LP5Ek0HlkUUozlqcxEsKipQeuDK3CDIgbgn2I2aRcs9Mv0k5eg7SpU0Y9HALN3cWUOABnpaDD7gaXcGUnhkde7XDVwxP9zwn0Sttb15giamdhEeFSz0D6M+x1prvMXOHILE+9kar5AMDaxDFszipoiQQMwJnZdA+FT0eA2PEVEXMgisldlcz8U9hIXuzkxvYkIqaV0PcvyHXUeRIh9Npx2a7e5K+00TsK2zum3Pg2FOapadZQP2lTrf386r26xTHR+qu9NjKMl4HgFi/4M8to8ttjSei3ISrZvRRX6Vj9rb9p3WgQO1FP5aZQxhuv6YyemMhx6P+CXeZhrXc7cpntPvWgWYD9iaXbqIuvaE7jrLoadQUQaISjGLEK9KHBGADJMUn34xiLYN/kwiTGkyqdYGmaVJigQJbiWwfEt6OuKzKvsu4252eYZrhZT6ssDeHHVSy1PemARIGoI5+lt7WqCtOMo6z7uLiupnLc9YTCtQmZJPd6Wbvjlm9gBWqFICbJ0f+XMpk7lXnGRp8w2ixeWv1mxjhmk=
+  sudo: ['ALL=(ALL) NOPASSWD:ALL']
   - groups:
       - sudo
       - docker
