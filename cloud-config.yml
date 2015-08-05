@@ -1,7 +1,6 @@
 #cloud-config
-
+hostname: coreos3
 coreos:
-  hostname: coreos3
   etcd2:
     # generate a new token for each unique cluster from https://discovery.etcd.io/new?size=3
     # specify the initial size of your cluster with ?size=X
